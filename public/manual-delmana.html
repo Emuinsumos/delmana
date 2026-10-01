@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delmana | Manual de tu página web</title>
+<style>
+:root{--crema:#fbf6ec;--trigo:#ead9b5;--cafe:#3b2a1a;--acento:#c8102e}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--crema);color:var(--cafe);font-family:system-ui,"Segoe UI",Roboto,sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:Georgia,serif;line-height:1.15}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.band{background:var(--acento);color:#fff;text-align:center;padding:10px;font-weight:700;letter-spacing:.3em;font-size:.85rem}
+.hero{background:linear-gradient(var(--crema),#f3e8cc);padding:72px 0 64px;text-align:center}
+.hero .marca{font-family:Georgia,serif;color:var(--acento);font-weight:700;letter-spacing:.35em;margin-bottom:18px}
+.hero h1{font-size:clamp(2.2rem,7vw,4rem);max-width:760px;margin:0 auto}
+.hero p{max-width:600px;margin:20px auto 0;font-size:1.15rem;opacity:.85}
+.btn{display:inline-block;margin-top:30px;background:var(--acento);color:#fff;text-decoration:none;font-weight:700;padding:15px 28px;border-radius:999px;box-shadow:0 6px 16px rgba(200,16,46,.25);transition:all .3s ease}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(200,16,46,.3)}
+section{padding:64px 0}
+h2{font-size:clamp(1.7rem,5vw,2.4rem);text-align:center}
+.lead{text-align:center;max-width:620px;margin:12px auto 0;opacity:.8}
+.grid{display:grid;gap:18px;margin-top:36px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:#fff;border:1px solid var(--trigo);border-radius:20px;padding:24px;transition:all .3s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(59,42,26,.12)}
+.card h3{font-size:1.2rem;margin-bottom:6px}
+.card .ico{width:44px;height:44px;border-radius:12px;background:var(--acento);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-family:Georgia,serif;margin-bottom:14px}
+.alt{background:#fff;border-block:1px solid var(--trigo)}
+.pasos{list-style:none;padding:0;margin-top:36px;display:grid;gap:16px}
+.paso{display:flex;gap:18px;background:var(--crema);border:1px solid var(--trigo);border-radius:20px;padding:22px;transition:all .3s ease}
+.paso:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(59,42,26,.1)}
+.n{flex:none;width:44px;height:44px;border-radius:50%;background:var(--cafe);color:var(--crema);display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:700;font-size:1.2rem}
+.paso h3{font-size:1.2rem;margin-bottom:4px}
+.paso p{opacity:.85}
+code{background:var(--trigo);padding:2px 8px;border-radius:8px;font-size:.92em;word-break:break-all}
+.tip{margin-top:28px;background:#fff7e0;border-left:5px solid var(--acento);border-radius:12px;padding:16px 20px}
+footer{background:var(--cafe);color:var(--crema);padding:56px 0 40px}
+footer h2{color:var(--crema)}
+.cond{display:grid;gap:14px;margin-top:30px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.cond div{background:rgba(251,246,236,.08);border:1px solid rgba(251,246,236,.2);border-radius:16px;padding:18px}
+.cond small{display:block;text-transform:uppercase;letter-spacing:.15em;font-size:.72rem;opacity:.65;margin-bottom:4px}
+.cond b{font-size:1.15rem}
+.fin{text-align:center;margin-top:34px;font-size:.85rem;opacity:.6}
+@media print{.btn{display:none}section{padding:28px 0}.card:hover,.paso:hover{transform:none;box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="band">DELMANA</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="marca">DELMANA · PAN RALLADO</p>
+    <h1>Bienvenido a tu propia página web</h1>
+    <p>Una vitrina profesional para mostrar tu producto, recibir consultas de comercios y concretar pedidos por WhatsApp. Y la manejás vos.</p>
+    <a class="btn" href="#instructivo">Ver cómo usarla</a>
+  </div>
+</header>
+
+<section id="beneficios">
+  <div class="wrap">
+    <h2>Lo que ganás con tu web</h2>
+    <p class="lead">Pensada para vender a rotiserías, carnicerías, fábricas de milanesas y restaurantes.</p>
+    <div class="grid">
+      <article class="card"><div class="ico">1</div><h3>Tu marca, bien presentada</h3><p>Diseño propio con los colores de Delmana, fotos grandes y el producto como protagonista.</p></article>
+      <article class="card"><div class="ico">2</div><h3>Pedidos por WhatsApp</h3><p>Dos líneas, Asesor de ventas y Consultas, con mensaje listo para que el cliente escriba en un toque.</p></article>
+      <article class="card"><div class="ico">3</div><h3>Consultas ordenadas</h3><p>El formulario guarda cada consulta en un panel privado, con estado nuevo o leído.</p></article>
+      <article class="card"><div class="ico">4</div><h3>Asistente automático</h3><p>Un botón flotante responde las preguntas frecuentes por vos y deriva a una persona cuando hace falta.</p></article>
+      <article class="card"><div class="ico">5</div><h3>La manejás vos</h3><p>Cambiás fotos, textos, WhatsApp y redes sociales desde tu celular, sin programar.</p></article>
+      <article class="card"><div class="ico">6</div><h3>Pensada para el celular</h3><p>Se ve y funciona bien en Android, iPhone y computadora, que es desde donde te van a encontrar.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="instructivo" class="alt">
+  <div class="wrap">
+    <h2>Instructivo rápido</h2>
+    <p class="lead">Todo se maneja desde un panel privado. No hace falta saber de tecnología.</p>
+    <ol class="pasos">
+      <li class="paso"><div class="n">1</div><div><h3>Entrá al panel</h3><p>Abrí <code data-path="/admin">/admin</code> en tu navegador e ingresá tu clave de acceso. Te la entregamos en forma personal: guardala y no la compartas.</p></div></li>
+      <li class="paso"><div class="n">2</div><div><h3>Cargá tus WhatsApp y redes</h3><p>En <b>WhatsApp y redes</b> escribí cada número con código de país, por ejemplo <code>5491122334455</code>. Si todavía no tenés Instagram, Facebook o TikTok, dejá el campo vacío: no se muestra. Cuando los tengas, pegá el link completo.</p></div></li>
+      <li class="paso"><div class="n">3</div><div><h3>Cambiá los textos</h3><p>En <b>Textos de la web</b> editás los títulos y descripciones principales.</p></div></li>
+      <li class="paso"><div class="n">4</div><div><h3>Configurá el asistente</h3><p>En <b>Bot de respuestas</b> escribí el mensaje de bienvenida y tus preguntas frecuentes con su respuesta. Con <b>+ Agregar pregunta</b> sumás más, y con <b>Eliminar</b> sacás las que no quieras.</p></div></li>
+      <li class="paso"><div class="n">5</div><div><h3>Tocá “Guardar todo”</h3><p>Guarda WhatsApp, redes, textos y asistente. Después recargá la web para ver los cambios.</p></div></li>
+      <li class="paso"><div class="n">6</div><div><h3>Subí tus fotos</h3><p>En <b>Fotos</b> tocá <b>Cambiar</b> en la que quieras reemplazar y elegí una de tu galería. Se achica sola y se guarda al instante. Con <b>Restaurar original</b> volvés a la anterior.</p></div></li>
+      <li class="paso"><div class="n">7</div><div><h3>Mirá tus consultas</h3><p>En <code data-path="/contacto">/contacto</code> con la misma clave ves los mensajes que llegan. Podés marcarlos como leídos, ver el texto completo, abrir WhatsApp con ese cliente o eliminarlos.</p></div></li>
+    </ol>
+    <div class="tip"><b>Consejo:</b> las fotos reales de tu producto, de tu depósito y de tus entregas son lo que más confianza genera. Reemplazá las de ejemplo apenas puedas.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Condiciones del servicio</h2>
+    <div class="cond">
+      <div><small>Inicio de la demo</small><b>3 de octubre</b></div>
+      <div><small>Fin de la demo</small><b>3 de noviembre</b></div>
+      <div><small>Luego de la demo</small><b>$25.000</b><br><span style="opacity:.7;font-size:.9rem">(sujeto a cambios)</span></div>
+      <div><small>Pago por transferencia a</small><b>mati.seba.garba</b><br><span style="opacity:.85;font-size:.95rem">MATIAS SEBASTIAN GARBARINO<br>Cta. Supervielle</span></div>
+    </div>
+    <p class="fin">DELMANA · Pan rallado para tus mejores recetas.</p>
+  </div>
+</footer>
+
+<script>
+// Reemplazá esta dirección por la de tu web antes de enviar el manual:
+const SITE = 'https://tu-web.vercel.app';
+document.querySelectorAll('[data-path]').forEach(function (el) {
+  el.textContent = SITE.replace(/^https?:\/\//, '') + el.dataset.path;
+});
+</script>
+</body>
+</html>
