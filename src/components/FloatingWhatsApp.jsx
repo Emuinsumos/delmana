@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { WhatsAppIcon } from './Icons.jsx'
 import { LIVE, WHATSAPP_1, WHATSAPP_2, waLink } from '../config/site.js'
 export default function FloatingWhatsApp() {
   const [open, setOpen] = useState(false)
@@ -20,8 +21,8 @@ export default function FloatingWhatsApp() {
             ))}
           </div>
           <p className="font-semibold mt-4 mb-2">¿Querés hablar con una persona?</p>
-          <a href={waLink(WHATSAPP_1)} target="_blank" rel="noreferrer" className="btn btn-primary w-full mb-2">WhatsApp 1</a>
-          <a href={waLink(WHATSAPP_2)} target="_blank" rel="noreferrer" className="btn btn-primary w-full">WhatsApp 2</a>
+          <a href={waLink(WHATSAPP_1)} target="_blank" rel="noreferrer" className="btn btn-primary w-full mb-2"><WhatsAppIcon />Asesor de ventas</a>
+          <a href={waLink(WHATSAPP_2)} target="_blank" rel="noreferrer" className="btn btn-primary w-full"><WhatsAppIcon />Consultas</a>
         </div>
       )}
       <button onClick={() => setOpen(!open)} aria-label="Asistente" className="w-16 h-16 rounded-full bg-acento text-white shadow-xl text-3xl hover:scale-105 transition">{open ? '✕' : '💬'}</button>

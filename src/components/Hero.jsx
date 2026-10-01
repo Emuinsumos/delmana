@@ -1,4 +1,5 @@
 import { BRAND_NAME, PRODUCT, TEXTS, WHATSAPP_1, waLink } from '../config/site.js'
+import { WhatsAppIcon } from './Icons.jsx'
 import Img from './Img.jsx'
 export default function Hero() {
   return (
@@ -10,7 +11,7 @@ export default function Hero() {
           <p className="mt-5 text-lg text-cafe/80">{TEXTS.HERO_TEXT}</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <a href="#consulta" className="btn btn-outline">Consultar producto</a>
-            <a href={waLink(WHATSAPP_1)} target="_blank" rel="noreferrer" className="btn btn-primary">Pedir por WhatsApp</a>
+            <a href={waLink(WHATSAPP_1)} target="_blank" rel="noreferrer" className="btn btn-primary"><WhatsAppIcon />Pedir por WhatsApp</a>
           </div>
         </div>
         <Img eager src={PRODUCT.IMAGE} alt={PRODUCT.IMAGE_ALT} className="w-full aspect-square rounded-3xl shadow-xl fade-up" />

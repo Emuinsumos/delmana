@@ -4,7 +4,7 @@ import Login from '../components/Login.jsx'
 import { LIVE, PRODUCT, TEXTS, USES } from '../config/site.js'
 import { borrarFoto, comprimir, guardarConfig, guardarFoto } from '../services/config.js'
 
-const SLOTS = [['producto', 'Producto (portada y sección producto)'], ['pan-rallado', 'Pan rallado'], ['milanesas', 'Milanesas'], ['pollo', 'Pollo rebozado'], ['verduras', 'Verduras'], ['gastronomia', 'Preparaciones gastronómicas']]
+const SLOTS = [['producto', 'Producto (portada y sección producto)'], ['pan-rallado', 'Pan rallado'], ['milanesas', 'Milanesas'], ['pollo', 'Pollo rebozado'], ['verduras', 'Verduras'], ['gastronomia', 'Preparaciones gastronómicas'], ['conoce', 'Conocé Delmana (sección de marca)']]
 const CAMPOS = [['HERO_TITLE', 'Portada: título'], ['HERO_TEXT', 'Portada: texto', 1], ['ABOUT_TITLE', 'Conocé Delmana: título'], ['ABOUT_TEXT', 'Conocé Delmana: texto', 1], ['PRODUCT_NAME', 'Producto: nombre'], ['PRESENTATION', 'Producto: presentación'], ['DESCRIPTION', 'Producto: descripción', 1], ['CTA_TITLE', 'Llamado comercial: título'], ['CTA_TEXT', 'Llamado comercial: texto', 1]]
 const inp = 'w-full rounded-xl border border-trigo bg-white px-4 py-3 text-base'
 const origen = { ...TEXTS, ...PRODUCT }

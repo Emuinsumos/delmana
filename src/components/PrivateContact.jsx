@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { WhatsAppIcon } from './Icons.jsx'
 import { eliminarConsulta, escucharConsultas, marcarLeida } from '../services/consultas.js'
 import { waLink } from '../config/site.js'
 export default function PrivateContact({ onLogout }) {
@@ -33,7 +34,7 @@ export default function PrivateContact({ onLogout }) {
             <div className="mt-4 flex flex-wrap gap-2">
               <button className="btn btn-outline !py-2 !px-4 text-sm" onClick={() => setOpen(open === m.id ? null : m.id)}>{open === m.id ? 'Ver menos' : 'Ver completo'}</button>
               {!m.leido && <button className="btn btn-outline !py-2 !px-4 text-sm" onClick={() => marcarLeida(m.id)}>Marcar como leído</button>}
-              <a className="btn btn-primary !py-2 !px-4 text-sm" target="_blank" rel="noreferrer" href={waLink(m.telefono, `Hola ${m.nombre}, te escribimos de Delmana por tu consulta.`)}>Abrir WhatsApp</a>
+              <a className="btn btn-primary !py-2 !px-4 text-sm" target="_blank" rel="noreferrer" href={waLink(m.telefono, `Hola ${m.nombre}, te escribimos de Delmana por tu consulta.`)}><WhatsAppIcon />Abrir WhatsApp</a>
               <button className="btn !py-2 !px-4 text-sm text-acento" onClick={() => borrar(m.id)}>Eliminar</button>
             </div>
           </article>
