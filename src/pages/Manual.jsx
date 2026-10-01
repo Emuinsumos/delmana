@@ -72,7 +72,7 @@ export default function Manual() {
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="rounded-2xl border border-crema/20 bg-crema/10 p-5"><small className="block uppercase tracking-widest text-xs opacity-65 mb-1">Inicio de la demo</small><b className="text-lg">3 de octubre</b></div>
             <div className="rounded-2xl border border-crema/20 bg-crema/10 p-5"><small className="block uppercase tracking-widest text-xs opacity-65 mb-1">Fin de la demo</small><b className="text-lg">3 de noviembre</b></div>
-            <div className="rounded-2xl border border-crema/20 bg-crema/10 p-5"><small className="block uppercase tracking-widest text-xs opacity-65 mb-1">Luego de la demo</small><b className="text-lg">$25.000</b><p className="text-sm opacity-70">(sujeto a cambios)</p></div>
+            <div className="rounded-2xl border border-crema/20 bg-crema/10 p-5"><small className="block uppercase tracking-widest text-xs opacity-65 mb-1">Luego de la demo</small><b className="text-lg">$25.000 mensuales</b><p className="text-sm opacity-85">por costo de mantenimiento</p><p className="text-xs opacity-70 mt-1">*Sujeto a posibles aumentos tarifarios</p></div>
             <div className="rounded-2xl border border-crema/20 bg-crema/10 p-5"><small className="block uppercase tracking-widest text-xs opacity-65 mb-1">Transferencia a</small><b className="text-lg break-all">mati.seba.garba</b><p className="text-sm opacity-85">MATIAS SEBASTIAN GARBARINO<br />Cta. Supervielle</p></div>
           </div>
           <p className="mt-8 text-center text-sm opacity-60">DELMANA · Pan rallado para tus mejores recetas.</p>
