@@ -1,6 +1,6 @@
 import { TEXTS, WHATSAPP_1, WHATSAPP_2, waLink } from '../config/site.js'
 export default function WhatsAppSection() {
-  const lines = [['Línea comercial 1', WHATSAPP_1], ['Línea comercial 2', WHATSAPP_2]]
+  const lines = [['VENTAS', WHATSAPP_1], ['Asesoria Comercial 2', WHATSAPP_2]]
   return (
     <section id="pedidos" className="bg-cafe text-crema">
       <div className="section text-center">
