@@ -3,8 +3,8 @@ export const BRAND_NAME = 'DELMANA'
 export const TAGLINE = 'Pan rallado para tus mejores recetas.'
 
 // Formato internacional SIN + ni espacios (Argentina celular: 549 + área + número)
-export const WHATSAPP_1 = '5491131900922'
-export const WHATSAPP_2 = '5491144308575'
+export const WHATSAPP_1 = '5491100000001'
+export const WHATSAPP_2 = '5491100000002'
 export const WHATSAPP_MESSAGE = 'Hola Delmana, quisiera consultar por el pan rallado y realizar un pedido.'
 
 // Email del usuario administrador creado en Firebase Auth (el PIN es su contraseña). No es un secreto.
@@ -13,7 +13,7 @@ export const ADMIN_EMAIL = 'matiasgarbarino19@gmail.com'
 export const PRODUCT = {
   PRODUCT_NAME: 'Pan rallado Delmana',
   BRAND_NAME,
-  PRESENTATION: 'Consultar Precios y costos de envío',
+  PRESENTATION: 'Consultar presentación disponible',
   DESCRIPTION: 'Una opción práctica y versátil para acompañar milanesas, rebozados y muchas otras preparaciones, pensada para cocinas, comercios y emprendimientos.',
   IMAGE: '/img/producto.jpg',
   IMAGE_ALT: 'Bolsa de pan rallado Delmana junto a una milanesa rebozada'
