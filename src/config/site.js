@@ -8,7 +8,7 @@ export const WHATSAPP_2 = '5491100000002'
 export const WHATSAPP_MESSAGE = 'Hola Delmana, quisiera consultar por el pan rallado y realizar un pedido.'
 
 // Email del usuario administrador creado en Firebase Auth (el PIN es su contraseña). No es un secreto.
-export const ADMIN_EMAIL = 'matiasgarbarino19@gmail.com'
+export const ADMIN_EMAIL = 'admin@delmana.com'
 
 export const PRODUCT = {
   PRODUCT_NAME: 'Pan rallado Delmana',
@@ -45,5 +45,10 @@ export const GALLERY = [
   { src: '/img/gastronomia.jpg', alt: 'Preparación gastronómica' }
 ]
 
-export const waLink = (number, text = WHATSAPP_MESSAGE) =>
-  `https://wa.me/${String(number).replace(/\D/g, '')}?text=${encodeURIComponent(text)}`
+// Valores editables desde /admin (se pisan al cargar Firestore). Los componentes siguen usando WHATSAPP_1/2.
+export const LIVE = { w1: WHATSAPP_1, w2: WHATSAPP_2, redes: {}, fotos: {} }
+
+export const waLink = (number, text = WHATSAPP_MESSAGE) => {
+  const n = number === WHATSAPP_1 ? LIVE.w1 : number === WHATSAPP_2 ? LIVE.w2 : number
+  return `https://wa.me/${String(n).replace(/\D/g, '')}?text=${encodeURIComponent(text)}`
+}
