@@ -13,7 +13,7 @@ export const ADMIN_EMAIL = 'matiasgarbarino19@gmail.com'
 export const PRODUCT = {
   PRODUCT_NAME: 'Pan rallado Delmana',
   BRAND_NAME,
-  PRESENTATION: 'Consultar presentación disponible',
+  PRESENTATION: 'Consultar Precios y costos de envío',
   DESCRIPTION: 'Una opción práctica y versátil para acompañar milanesas, rebozados y muchas otras preparaciones, pensada para cocinas, comercios y emprendimientos.',
   IMAGE: '/img/producto.jpg',
   IMAGE_ALT: 'Bolsa de pan rallado Delmana junto a una milanesa rebozada'
