@@ -13,7 +13,7 @@ export async function cargarLive() {
       if (d.textos) {
         const t = d.textos
         Object.keys(TEXTS).forEach((k) => { if (t[k]) TEXTS[k] = t[k] })
-        ;['PRODUCT_NAME', 'PRESENTATION', 'DESCRIPTION'].forEach((k) => { if (t[k]) PRODUCT[k] = t[k] })
+        ;['PRODUCT_NAME', 'SUMMARY'].forEach((k) => { if (t[k]) PRODUCT[k] = t[k] })
         ;(t.uses || []).forEach((u, i) => { if (USES[i]) { if (u.title) USES[i].title = u.title; if (u.text) USES[i].text = u.text } })
       }
       if (d.bot) {

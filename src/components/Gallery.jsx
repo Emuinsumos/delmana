@@ -6,7 +6,7 @@ export default function Gallery() {
       <div className="section">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center">Galería</h2>
         <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-          {GALLERY.map((g, i) => <Img key={i} src={g.src} alt={g.alt} className="w-full aspect-square rounded-2xl hover:scale-[1.02] transition duration-300" />)}
+          {GALLERY.map((g, i) => <Img key={i} src={g.src} alt={g.alt} className="w-full aspect-square rounded-2xl hover:-translate-y-1 hover:shadow-xl transition-all duration-300" />)}
         </div>
       </div>
     </section>

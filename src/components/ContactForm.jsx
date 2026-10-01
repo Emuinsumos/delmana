@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { enviarConsulta } from '../services/consultas.js'
+import { TEXTS, WHATSAPP_1, waLink } from '../config/site.js'
+import { WhatsAppIcon } from './Icons.jsx'
 const empty = { nombre: '', empresa: '', telefono: '', email: '', mensaje: '' }
 const inp = 'w-full rounded-xl border border-trigo bg-white px-4 py-3.5 text-base focus:outline-none focus:ring-2 focus:ring-acento'
 export default function ContactForm() {
@@ -30,9 +32,10 @@ export default function ContactForm() {
     </label>
   )
   return (
-    <section id="consulta" className="section max-w-2xl">
-      <h2 className="font-display text-3xl md:text-4xl font-bold text-center">¿Tenés una consulta?</h2>
-      <form onSubmit={submit} noValidate className="mt-8 space-y-4">
+    <section id="consulta" className="section max-w-2xl !pb-28 md:!pb-24">
+      <h2 className="font-display text-3xl md:text-4xl font-bold text-center">{TEXTS.CTA_TITLE}</h2>
+      <p className="mt-3 text-center text-cafe/80">{TEXTS.CTA_TEXT}</p>
+      <form onSubmit={submit} noValidate className="mt-8 space-y-4 bg-white rounded-3xl shadow-lg p-5 md:p-8">
         {field('nombre', 'Nombre')}
         {field('empresa', 'Empresa / Comercio')}
         {field('telefono', 'Teléfono', { type: 'tel', mode: 'tel' })}
@@ -41,6 +44,8 @@ export default function ContactForm() {
         <button disabled={status === 'loading'} className="btn btn-primary w-full disabled:opacity-60">{status === 'loading' ? 'Enviando…' : 'Enviar consulta'}</button>
         {status === 'ok' && <p className="text-green-700 font-semibold text-center">Consulta enviada correctamente.</p>}
         {status === 'error' && <p className="text-acento font-semibold text-center">No pudimos enviar tu consulta. Intentá nuevamente.</p>}
+        <p className="text-center text-sm text-cafe/60">o si preferís</p>
+        <a href={waLink(WHATSAPP_1)} target="_blank" rel="noreferrer" className="btn btn-wa w-full"><WhatsAppIcon />Hablar con un Asesor de Ventas por WhatsApp</a>
       </form>
     </section>
   )

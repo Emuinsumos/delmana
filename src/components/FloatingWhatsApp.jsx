@@ -1,12 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { WhatsAppIcon } from './Icons.jsx'
 import { LIVE, WHATSAPP_1, WHATSAPP_2, waLink } from '../config/site.js'
 export default function FloatingWhatsApp() {
   const [open, setOpen] = useState(false)
   const [chat, setChat] = useState([])
+  const [enForm, setEnForm] = useState(false)
+  useEffect(() => {
+    const el = document.getElementById('consulta')
+    if (!el || !('IntersectionObserver' in window)) return
+    const io = new IntersectionObserver(([e]) => setEnForm(e.isIntersecting), { threshold: 0.05 })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
   const preguntar = (i) => setChat([...chat, { de: 'yo', t: i.p }, { de: 'bot', t: i.r }])
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
+    <div className={`fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3 ${enForm && !open ? 'max-md:hidden' : ''}`}>
       {open && (
         <div className="bg-white rounded-2xl shadow-xl w-[calc(100vw-2.5rem)] max-w-sm max-h-[70vh] overflow-y-auto p-4 fade-up">
           <div className="bg-trigo/50 rounded-xl p-3 mb-3">{LIVE.bot.bienvenida}</div>

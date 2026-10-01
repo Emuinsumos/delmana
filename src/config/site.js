@@ -13,17 +13,16 @@ export const ADMIN_EMAIL = 'matiasgarbarino19@gmail.com'
 export const PRODUCT = {
   PRODUCT_NAME: 'Pan rallado Delmana',
   BRAND_NAME,
-  PRESENTATION: 'Consultar presentación disponible',
-  DESCRIPTION: 'Una opción práctica y versátil para acompañar milanesas, rebozados y muchas otras preparaciones, pensada para cocinas, comercios y emprendimientos.',
+  SUMMARY: 'Pan rallado de uso profesional para cocinas, rotiserías y fábricas.',
   IMAGE: '/img/producto.jpg',
   IMAGE_ALT: 'Bolsa de pan rallado Delmana junto a una milanesa rebozada'
 }
 
 export const TEXTS = {
   HERO_TITLE: 'Pan rallado para tus mejores recetas',
-  HERO_TEXT: 'Una opción práctica y versátil para acompañar milanesas, rebozados y muchas otras preparaciones.',
+  HERO_COPY: 'Pan rallado de alta calidad para gastronomía y comercios. Presentaciones de 20 Kg y 25 Kg con rendimiento superior.',
   ABOUT_TITLE: 'Conocé Delmana',
-  ABOUT_TEXT: 'Delmana ofrece pan rallado pensado para acompañar las necesidades de cocinas, comercios y emprendimientos gastronómicos. Un producto práctico y versátil para preparar diferentes recetas y rebozados.',
+  ABOUT_COPY: 'Un pan rallado de horneado parejo y textura uniforme, elaborado sin conservantes innecesarios, para que cada empanado salga igual de bien en cocinas, comercios y fábricas.',
   CTA_TITLE: '¿Buscás pan rallado para tu comercio o emprendimiento?',
   CTA_TEXT: 'Consultanos por disponibilidad, presentaciones y precios.'
 }
@@ -61,3 +60,28 @@ LIVE.bot = {
     { p: '¿Tienen precios para comercios?', r: 'Consultanos por disponibilidad, presentaciones y precios.' }
   ]
 }
+
+// ====== Landing B2B: editá acá ======
+export const SPECS = [
+  { k: 'Granulometría', v: 'Media / Pareja' },
+  { k: 'Rendimiento', v: 'Alto empanado sin desprenderse' },
+  { k: 'Absorción de aceite', v: 'Reducida (dorado parejo)' },
+  { k: 'Presentaciones', v: 'Bolsas reforzadas de 20 Kg y 25 Kg' }
+]
+export const TRUST = [
+  { icon: '🏭', label: 'Fábricas de Milanesas' },
+  { icon: '🥩', label: 'Carnicerías' },
+  { icon: '🍗', label: 'Rotiserías y Catering' },
+  { icon: '🍽️', label: 'Restaurantes' }
+]
+export const GUARANTEES = [
+  { icon: '🛡️', title: 'Calidad Constante', text: 'Mismo granulado en cada bolsa.' },
+  { icon: '🚚', title: 'Envíos Mayoristas', text: 'Entregas coordinadas a comercios.' },
+  { icon: '📦', title: 'Empaque Reforzado', text: 'Bolsas diseñadas para uso profesional.' }
+]
+// Completá "texto" para que cada testimonio aparezca. Si todos están vacíos, la sección no se muestra.
+export const TESTIMONIOS = [
+  { texto: '', negocio: '', rubro: '', localidad: '' },
+  { texto: '', negocio: '', rubro: '', localidad: '' },
+  { texto: '', negocio: '', rubro: '', localidad: '' }
+]
