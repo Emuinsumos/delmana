@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useAuth from '../hooks/useAuth.js'
 import Login from '../components/Login.jsx'
 import { LIVE, PRODUCT, TEXTS, USES } from '../config/site.js'
-import { borrarFoto, comprimir, guardarConfig, guardarFoto } from '../services/config.js'
+import { agregarFoto, borrarFoto, borrarGaleria, cargarGaleria, comprimir, guardarConfig, guardarFoto, ordenarGaleria } from '../services/config.js'
 
 const SLOTS = [['producto', 'Producto (portada y sección producto)'], ['pan-rallado', 'Pan rallado'], ['milanesas', 'Milanesas'], ['pollo', 'Pollo rebozado'], ['verduras', 'Verduras'], ['gastronomia', 'Preparaciones gastronómicas'], ['conoce', 'Conocé Delmana (sección de marca)']]
 const CAMPOS = [['HERO_TITLE', 'Portada: título'], ['HERO_COPY', 'Portada: texto', 1], ['ABOUT_TITLE', 'Conocé Delmana: título'], ['ABOUT_COPY', 'Conocé Delmana: texto', 1], ['PRODUCT_NAME', 'Producto: nombre'], ['SUMMARY', 'Producto: descripción corta', 1], ['CTA_TITLE', 'Contacto: título'], ['CTA_TEXT', 'Contacto: texto', 1]]
@@ -18,6 +18,27 @@ export default function Admin() {
   const [items, setItems] = useState(() => LIVE.bot.items.map((i) => ({ ...i })))
   const [msg, setMsg] = useState('')
   const [, tick] = useState(0)
+  const [gal, setGal] = useState([])
+  useEffect(() => { cargarGaleria().then(setGal).catch(() => {}) }, [])
+  const agregar = async (files) => {
+    if (!files || !files.length) return
+    setMsg('Subiendo fotos…')
+    try {
+      const base = Date.now()
+      const lista = Array.from(files)
+      for (let i = 0; i < lista.length; i++) { await agregarFoto(await comprimir(lista[i], 1000, 0.75), base + i) }
+      setGal(await cargarGaleria()); setMsg('Fotos agregadas ✔')
+    } catch { setMsg('No se pudo subir alguna foto.') }
+  }
+  const mover = async (i, d) => {
+    const j = i + d
+    if (j < 0 || j >= gal.length) return
+    try { await ordenarGaleria(gal[i], gal[j]); setGal(await cargarGaleria()) } catch { setMsg('No se pudo mover la foto.') }
+  }
+  const quitar = async (id) => {
+    if (!window.confirm('¿Eliminar esta foto de la galería?')) return
+    try { await borrarGaleria(id); setGal(await cargarGaleria()) } catch { setMsg('No se pudo eliminar.') }
+  }
   const set = (k) => (e) => setF({ ...f, [k]: e.target.value })
   const setIt = (n, k) => (e) => setItems(items.map((x, i) => (i === n ? { ...x, [k]: e.target.value } : x)))
   const setUs = (n, k) => (e) => setUses(uses.map((x, i) => (i === n ? { ...x, [k]: e.target.value } : x)))
@@ -48,6 +69,7 @@ export default function Admin() {
         <h1 className="font-display text-3xl font-bold">Administración</h1>
         <div className="flex gap-2">
           <a href="/contacto" className="btn btn-outline !py-2">Mensajes</a>
+          <a href="/manual" className="btn btn-outline !py-2">Manual</a>
           <button onClick={logout} className="btn btn-outline !py-2">Salir</button>
         </div>
       </div>
@@ -94,7 +116,7 @@ export default function Admin() {
       <button onClick={guardar} className="btn btn-primary w-full">Guardar todo</button>
 
       <section className={box}>
-        <h2 className="font-bold text-xl">Fotos</h2>
+        <h2 className="font-bold text-xl">Fotos principales</h2>
         <div className="grid grid-cols-2 gap-4">
           {SLOTS.map(([slot, label]) => (
             <div key={slot} className="space-y-2">
@@ -102,6 +124,25 @@ export default function Admin() {
               <p className="text-sm font-semibold">{label}</p>
               <label className="btn btn-primary !py-2 text-sm w-full cursor-pointer">Cambiar<input type="file" accept="image/*" className="hidden" onChange={(e) => subir(slot, e.target.files[0])} /></label>
               {LIVE.fotos[slot] && <button onClick={() => restaurar(slot)} className="text-sm underline w-full">Restaurar original</button>}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className={box}>
+        <h2 className="font-bold text-xl">Galería</h2>
+        <p className="text-sm text-cafe/70">La galería muestra estas fotos en este orden. Si no cargás ninguna, se usan las de ejemplo.</p>
+        <label className="btn btn-primary w-full cursor-pointer">+ Agregar fotos<input type="file" accept="image/*" multiple className="hidden" onChange={(e) => { agregar(e.target.files); e.target.value = '' }} /></label>
+        <div className="grid grid-cols-2 gap-4">
+          {gal.map((g, i) => (
+            <div key={g.id} className="space-y-2">
+              <img src={g.data} alt={`Foto ${i + 1}`} className="w-full aspect-square object-cover rounded-xl bg-trigo/60" />
+              <p className="text-sm font-semibold">Posición {i + 1}</p>
+              <div className="flex gap-2">
+                <button onClick={() => mover(i, -1)} disabled={i === 0} className="btn btn-outline !py-2 !px-3 flex-1 disabled:opacity-30" aria-label="Mover antes">←</button>
+                <button onClick={() => mover(i, 1)} disabled={i === gal.length - 1} className="btn btn-outline !py-2 !px-3 flex-1 disabled:opacity-30" aria-label="Mover después">→</button>
+              </div>
+              <button onClick={() => quitar(g.id)} className="text-sm underline text-acento w-full">Eliminar</button>
             </div>
           ))}
         </div>
