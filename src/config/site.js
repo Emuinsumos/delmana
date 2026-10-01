@@ -52,3 +52,12 @@ export const waLink = (number, text = WHATSAPP_MESSAGE) => {
   const n = number === WHATSAPP_1 ? LIVE.w1 : number === WHATSAPP_2 ? LIVE.w2 : number
   return `https://wa.me/${String(n).replace(/\D/g, '')}?text=${encodeURIComponent(text)}`
 }
+
+LIVE.bot = {
+  bienvenida: '¡Hola! Soy el asistente de Delmana. ¿En qué te puedo ayudar?',
+  items: [
+    { p: '¿Cómo hago un pedido?', r: 'Escribinos por WhatsApp y te ayudamos con tu pedido.' },
+    { p: '¿Qué presentaciones hay?', r: 'Consultanos por WhatsApp por las presentaciones disponibles.' },
+    { p: '¿Tienen precios para comercios?', r: 'Consultanos por disponibilidad, presentaciones y precios.' }
+  ]
+}

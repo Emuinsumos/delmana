@@ -1,6 +1,6 @@
 import { collection, deleteDoc, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
 import { db } from './firebase.js'
-import { LIVE } from '../config/site.js'
+import { LIVE, PRODUCT, TEXTS, USES } from '../config/site.js'
 
 export async function cargarLive() {
   try {
@@ -10,6 +10,16 @@ export async function cargarLive() {
       if (d.w1) LIVE.w1 = d.w1
       if (d.w2) LIVE.w2 = d.w2
       LIVE.redes = { instagram: d.instagram || '', facebook: d.facebook || '', tiktok: d.tiktok || '' }
+      if (d.textos) {
+        const t = d.textos
+        Object.keys(TEXTS).forEach((k) => { if (t[k]) TEXTS[k] = t[k] })
+        ;['PRODUCT_NAME', 'PRESENTATION', 'DESCRIPTION'].forEach((k) => { if (t[k]) PRODUCT[k] = t[k] })
+        ;(t.uses || []).forEach((u, i) => { if (USES[i]) { if (u.title) USES[i].title = u.title; if (u.text) USES[i].text = u.text } })
+      }
+      if (d.bot) {
+        if (d.bot.bienvenida) LIVE.bot.bienvenida = d.bot.bienvenida
+        if (Array.isArray(d.bot.items)) LIVE.bot.items = d.bot.items
+      }
     }
     f.forEach((x) => { LIVE.fotos[x.id] = x.data().data })
   } catch (e) { console.warn('Config no cargada, uso valores por defecto', e) }
@@ -18,7 +28,6 @@ export const guardarConfig = (d) => setDoc(doc(db, 'delmana_config', 'site'), d,
 export const guardarFoto = (slot, data) => setDoc(doc(db, 'delmana_fotos', slot), { data })
 export const borrarFoto = (slot) => deleteDoc(doc(db, 'delmana_fotos', slot))
 
-// Achica la foto en el celu antes de guardarla (máx 1100px, webp)
 export function comprimir(file) {
   return new Promise((ok, fail) => {
     const img = new Image()
