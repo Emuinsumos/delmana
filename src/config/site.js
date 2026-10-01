@@ -8,7 +8,7 @@ export const WHATSAPP_2 = '5491144308575'
 export const WHATSAPP_MESSAGE = 'Hola Delmana, quisiera consultar por el pan rallado y realizar un pedido.'
 
 // Email del usuario administrador creado en Firebase Auth (el PIN es su contraseña). No es un secreto.
-export const ADMIN_EMAIL = 'admin@delmana.com'
+export const ADMIN_EMAIL = 'matiasgarbarino19@gmail.com'
 
 export const PRODUCT = {
   PRODUCT_NAME: 'Pan rallado Delmana',
