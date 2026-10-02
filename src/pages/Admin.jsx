@@ -10,7 +10,7 @@ const inp = 'w-full rounded-xl border border-trigo bg-white px-4 py-3 text-base'
 const origen = { ...TEXTS, ...PRODUCT }
 
 export default function Admin() {
-  const { user, login, logout } = useAuth()
+  const { user, login, logout, cambiarPin } = useAuth()
   const [f, setF] = useState({ w1: LIVE.w1, w2: LIVE.w2, instagram: LIVE.redes.instagram || '', facebook: LIVE.redes.facebook || '', tiktok: LIVE.redes.tiktok || '' })
   const [t, setT] = useState(() => { const o = {}; CAMPOS.forEach(([k]) => { o[k] = origen[k] }); return o })
   const [uses, setUses] = useState(() => USES.map((u) => ({ title: u.title, text: u.text })))
@@ -19,6 +19,10 @@ export default function Admin() {
   const [msg, setMsg] = useState('')
   const [, tick] = useState(0)
   const [gal, setGal] = useState([])
+  const [pinActual, setPinActual] = useState('')
+  const [pinNuevo, setPinNuevo] = useState('')
+  const [pinRep, setPinRep] = useState('')
+  const [pinMsg, setPinMsg] = useState('')
   useEffect(() => { cargarGaleria().then(setGal).catch(() => {}) }, [])
   const agregar = async (files) => {
     if (!files || !files.length) return
@@ -42,6 +46,24 @@ export default function Admin() {
   const set = (k) => (e) => setF({ ...f, [k]: e.target.value })
   const setIt = (n, k) => (e) => setItems(items.map((x, i) => (i === n ? { ...x, [k]: e.target.value } : x)))
   const setUs = (n, k) => (e) => setUses(uses.map((x, i) => (i === n ? { ...x, [k]: e.target.value } : x)))
+
+  const cambiar = async () => {
+    if (pinNuevo.length < 6) return setPinMsg('El PIN nuevo debe tener al menos 6 caracteres.')
+    if (pinNuevo !== pinRep) return setPinMsg('El PIN nuevo y su repetición no coinciden.')
+    if (pinNuevo === pinActual) return setPinMsg('El PIN nuevo tiene que ser distinto al actual.')
+    setPinMsg('Cambiando…')
+    try {
+      await cambiarPin(pinActual, pinNuevo)
+      setPinActual(''); setPinNuevo(''); setPinRep('')
+      setPinMsg('PIN cambiado ✔ Desde ahora usá el PIN nuevo.')
+    } catch (e) {
+      const c = e && e.code
+      if (c === 'auth/wrong-password' || c === 'auth/invalid-credential') setPinMsg('El PIN actual no es correcto.')
+      else if (c === 'auth/too-many-requests') setPinMsg('Demasiados intentos. Esperá unos minutos y probá de nuevo.')
+      else if (c === 'auth/weak-password' || c === 'auth/password-does-not-meet-requirements') setPinMsg('El PIN nuevo no cumple los requisitos (mínimo 6 caracteres).')
+      else setPinMsg('No se pudo cambiar el PIN. Probá de nuevo.')
+    }
+  }
 
   if (user === undefined) return <p className="p-10 text-center">Cargando…</p>
   if (!user) return <Login onLogin={login} />
@@ -146,6 +168,16 @@ export default function Admin() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className={box}>
+        <h2 className="font-bold text-xl">PIN de ingreso</h2>
+        <p className="text-sm text-cafe/70">Es la clave para entrar a /admin, /contacto y /manual. Mínimo 6 caracteres.</p>
+        <input type="password" autoComplete="current-password" className={inp} placeholder="PIN actual" value={pinActual} onChange={(e) => setPinActual(e.target.value)} />
+        <input type="password" autoComplete="new-password" className={inp} placeholder="PIN nuevo" value={pinNuevo} onChange={(e) => setPinNuevo(e.target.value)} />
+        <input type="password" autoComplete="new-password" className={inp} placeholder="Repetir PIN nuevo" value={pinRep} onChange={(e) => setPinRep(e.target.value)} />
+        {pinMsg && <p className="font-semibold text-acento">{pinMsg}</p>}
+        <button onClick={cambiar} className="btn btn-primary w-full">Cambiar PIN</button>
       </section>
     </main>
   )
