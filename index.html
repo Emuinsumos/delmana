@@ -10,5 +10,24 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- PAUSA-INICIO -->
+    <style>
+      #pausa{position:fixed;inset:0;z-index:2147483647;background:#f5ecd9;color:#6b1e2b;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;font-family:system-ui,sans-serif}
+      #pausa h1{font-size:clamp(28px,8vw,56px);margin:0 0 12px;letter-spacing:2px}
+      #pausa p{font-size:clamp(16px,4vw,22px);margin:6px 0}
+      #pausa a{display:inline-block;margin-top:18px;padding:14px 28px;background:#6b1e2b;color:#f5ecd9;border-radius:999px;text-decoration:none;font-weight:700;font-size:clamp(16px,4.5vw,22px)}
+      body.pausado{overflow:hidden}
+    </style>
+    <div id="pausa">
+      <h1>PÁGINA EN PAUSA</h1>
+      <p>Para más información contactarse con</p>
+      <a href="https://instagram.com/tu_vidrieradigital" target="_blank" rel="noopener">@tu_vidrieradigital</a>
+    </div>
+    <script>
+      if (location.search.includes('acceso=1')) document.getElementById('pausa').remove();
+      else document.body.classList.add('pausado');
+    </script>
+    <!-- PAUSA-FIN -->
   </body>
 </html>
